@@ -33,10 +33,11 @@ func _process(delta):
 	if velocity.length() > 0:
 		if Input.is_action_pressed("ready_weapon"):
 			velocity = velocity.normalized() * aiming_speed
-			look_at(get_global_mouse_position())
 		else:
 			velocity = velocity.normalized() * normal_speed
-			
+	
+	if Input.is_action_pressed("ready_weapon"):
+		look_at(get_global_mouse_position())
 	
 	if Input.is_action_just_pressed("ready_weapon"):
 		get_node("CollisionShape2D/Weapon").visible = true
