@@ -1,52 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://light-test/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://light-test/wall.tscn" type="PackedScene" id=2]
-[ext_resource path="res://spot.png" type="Texture" id=3]
+[ext_resource path="res://light-test/test_level.tscn" type="PackedScene" id=4]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Floor" type="ColorRect" parent="."]
-margin_right = 798.0
-margin_bottom = 598.0
-color = Color( 0.568627, 0.572549, 0.541176, 1 )
-
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
-color = Color( 0, 0, 0, 1 )
-
-[node name="Wall" parent="." instance=ExtResource( 2 )]
-position = Vector2( 456, 430 )
-scale = Vector2( 11.24, 1 )
-
-[node name="Wall2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 587, 291 )
-scale = Vector2( 2.48, 8.32 )
-
-[node name="Wall4" parent="." instance=ExtResource( 2 )]
-position = Vector2( 236, 239 )
-scale = Vector2( 2.48, 5.24 )
-
-[node name="Wall6" parent="." instance=ExtResource( 2 )]
-position = Vector2( 381, 56 )
-scale = Vector2( 0.999999, 0.719998 )
-
-[node name="Wall5" parent="." instance=ExtResource( 2 )]
-position = Vector2( 252, 401 )
-scale = Vector2( 3.36, 3.2 )
-
-[node name="Light2D" type="Light2D" parent="."]
-position = Vector2( 497, 411 )
-texture = ExtResource( 3 )
-texture_scale = 18.23
-color = Color( 0.0901961, 0.776471, 0.262745, 1 )
-energy = 2.63
-shadow_enabled = true
-
-[node name="Wall3" parent="." instance=ExtResource( 2 )]
-position = Vector2( 439, 178 )
-scale = Vector2( 14.1295, 1 )
+[node name="TestLevel" parent="." instance=ExtResource( 4 )]
+position = Vector2( -640, -64 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 light_mask = 2
-position = Vector2( 98, 372 )
+position = Vector2( 171, 253 )
