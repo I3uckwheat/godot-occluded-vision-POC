@@ -1,4 +1,4 @@
-extends Area2D
+extends KinematicBody2D
 
 
 # Declare member variables here. Examples:
@@ -40,11 +40,11 @@ func _process(delta):
 		look_at(get_global_mouse_position())
 	
 	if Input.is_action_just_pressed("ready_weapon"):
-		get_node("CollisionShape2D/Weapon").visible = true
+		get_node("Weapon").visible = true
 	elif Input.is_action_just_released("ready_weapon"):
-		get_node("CollisionShape2D/Weapon").visible = false
-
-	position += velocity * delta
+		get_node("Weapon").visible = false
+	
+	move_and_slide(velocity)
 	
 	
 	
