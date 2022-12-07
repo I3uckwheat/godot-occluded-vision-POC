@@ -6,8 +6,12 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="TestLevel" parent="." instance=ExtResource( 4 )]
-position = Vector2( -640, -64 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 light_mask = 2
-position = Vector2( 171, 253 )
+position = Vector2( -206, -201 )
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+current = true
+smoothing_enabled = true
+smoothing_speed = 12.0

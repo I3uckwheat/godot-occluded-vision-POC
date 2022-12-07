@@ -5,85 +5,118 @@
 
 [node name="TestLevel" type="Node2D"]
 position = Vector2( -301, 214 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Floor" type="ColorRect" parent="."]
-margin_left = -1612.0
-margin_top = -1076.0
-margin_right = 2074.0
-margin_bottom = 1918.0
+margin_left = -1750.0
+margin_top = -1594.0
+margin_right = 1936.0
+margin_bottom = 1400.0
 color = Color( 0.568627, 0.572549, 0.541176, 1 )
 
-[node name="Light2D" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1107, -64 )
+[node name="Lights" type="Node" parent="."]
+
+[node name="Light2D2" parent="Lights" instance=ExtResource( 2 )]
+position = Vector2( -643, 378 )
 texture_scale = 2.01
-energy = 0.45
+color = Color( 0.964706, 0.0352941, 0.0352941, 1 )
+energy = 0.86
+
+[node name="Light2D3" parent="Lights" instance=ExtResource( 2 )]
+position = Vector2( -62, -34 )
+texture_scale = 2.01
+color = Color( 0.337255, 0, 1, 1 )
+energy = 0.74
+
+[node name="Light2D" parent="Lights" instance=ExtResource( 2 )]
+position = Vector2( 69, -142 )
+texture_scale = 2.01
+energy = 0.74
 
 [node name="Walls" type="Node" parent="."]
 
 [node name="StaticBody2D" parent="Walls" instance=ExtResource( 1 )]
-position = Vector2( -56.0001, 84 )
+position = Vector2( -221, -331 )
 scale = Vector2( 22.48, 1 )
 
+[node name="StaticBody2D21" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( -651, -143 )
+scale = Vector2( 7.84, 1 )
+
 [node name="StaticBody2D6" parent="Walls" instance=ExtResource( 1 )]
-position = Vector2( 569, 83 )
+position = Vector2( 404, -332 )
 scale = Vector2( 22.48, 1 )
 
 [node name="StaticBody2D8" parent="Walls" instance=ExtResource( 1 )]
-position = Vector2( 350, 846 )
-scale = Vector2( 36.84, 1 )
+position = Vector2( 61, 436 )
+scale = Vector2( 45.92, 1 )
 
 [node name="StaticBody2D10" parent="Walls" instance=ExtResource( 1 )]
-position = Vector2( -304, 847 )
+position = Vector2( -627, 438 )
 scale = Vector2( 9.22838, 1 )
 
+[node name="StaticBody2D18" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( -325, 321 )
+scale = Vector2( 16.0284, 1 )
+
 [node name="StaticBody2D2" parent="Walls" instance=ExtResource( 1 )]
-position = Vector2( -55.0001, 345 )
+position = Vector2( -220, -70 )
 scale = Vector2( 22.48, 1 )
 
 [node name="StaticBody2D3" parent="Walls" instance=ExtResource( 1 )]
-position = Vector2( 252, 159 )
+position = Vector2( 87, -256 )
 scale = Vector2( 0.92, 5.97416 )
 
 [node name="StaticBody2D7" parent="Walls" instance=ExtResource( 1 )]
-position = Vector2( 886, 465 )
+position = Vector2( 721, 50 )
 scale = Vector2( 1.4, 26.6142 )
 
 [node name="StaticBody2D9" parent="Walls" instance=ExtResource( 1 )]
-position = Vector2( 886, 465 )
+position = Vector2( 721, 50 )
 scale = Vector2( 1.4, 26.6142 )
 
 [node name="StaticBody2D5" parent="Walls" instance=ExtResource( 1 )]
-position = Vector2( -382, 213 )
+position = Vector2( -547, -202 )
+scale = Vector2( 0.92, 9.85416 )
+
+[node name="StaticBody2D19" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( -752, 147 )
+scale = Vector2( 0.92, 20.4542 )
+
+[node name="StaticBody2D20" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( -553, 189 )
 scale = Vector2( 0.92, 9.85416 )
 
 [node name="StaticBody2D11" parent="Walls" instance=ExtResource( 1 )]
-position = Vector2( 72.9999, 499 )
-scale = Vector2( 0.92, 9.85416 )
+position = Vector2( -99, 127 )
+scale = Vector2( 1.23327, 14.0844 )
 
 [node name="StaticBody2D4" parent="Walls" instance=ExtResource( 1 )]
-position = Vector2( 252, 329 )
+position = Vector2( 87, -86 )
 scale = Vector2( 0.92, 2.01416 )
 
 [node name="StaticBody2D12" parent="Walls" instance=ExtResource( 1 )]
-position = Vector2( 713, 346 )
+position = Vector2( 548, -69 )
 scale = Vector2( 0.92, 2.01416 )
 
 [node name="StaticBody2D13" parent="Walls" instance=ExtResource( 1 )]
-position = Vector2( 573, 343 )
+position = Vector2( 408, -72 )
 scale = Vector2( 0.92, 2.01416 )
 
 [node name="StaticBody2D14" parent="Walls" instance=ExtResource( 1 )]
-position = Vector2( 433, 347 )
+position = Vector2( 268, -68 )
 scale = Vector2( 0.92, 2.01416 )
 
 [node name="StaticBody2D15" parent="Walls" instance=ExtResource( 1 )]
-position = Vector2( 434, 484 )
+position = Vector2( 269, 69 )
 scale = Vector2( 0.92, 2.01416 )
 
 [node name="StaticBody2D16" parent="Walls" instance=ExtResource( 1 )]
-position = Vector2( 574, 481 )
+position = Vector2( 409, 66 )
 scale = Vector2( 0.92, 2.01416 )
 
 [node name="StaticBody2D17" parent="Walls" instance=ExtResource( 1 )]
-position = Vector2( 710, 482 )
+position = Vector2( 545, 67 )
 scale = Vector2( 0.92, 2.01416 )
