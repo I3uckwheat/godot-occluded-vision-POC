@@ -1,24 +1,18 @@
-[gd_scene load_steps=3 format=2]
-
-[sub_resource type="OccluderPolygon2D" id=2]
-polygon = PoolVector2Array( 15, -15, 15, 15, -15, 15, -15, -15 )
+[gd_scene load_steps=2 format=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 
-[node name="StaticBody2D" type="StaticBody2D"]
+[node name="Wall" type="Node2D"]
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D"]
 margin_left = -15.0
 margin_top = -15.0
 margin_right = 15.0
 margin_bottom = 15.0
-color = Color( 0.486275, 0.482353, 0.262745, 1 )
+color = Color( 1, 0, 0, 1 )
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="ColorRect"]
-position = Vector2( 15, 15 )
-scale = Vector2( 0.95, 0.95 )
-occluder = SubResource( 2 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 scale = Vector2( 1.5, 1.5 )
 shape = SubResource( 1 )
