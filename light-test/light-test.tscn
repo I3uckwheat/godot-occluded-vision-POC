@@ -4,6 +4,7 @@
 [ext_resource path="res://light-test/test_level.tscn" type="PackedScene" id=4]
 
 [node name="Node2D" type="Node2D"]
+position = Vector2( -143, -45 )
 
 [node name="TestLevel" parent="." instance=ExtResource( 4 )]
 

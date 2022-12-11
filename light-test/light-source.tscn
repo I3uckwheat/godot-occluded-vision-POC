@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://light-test/light.png" type="Texture" id=1]
+[ext_resource path="res://light-test/LightSource.gd" type="Script" id=2]
 
 [node name="Light2D" type="Light2D"]
 texture = ExtResource( 1 )
@@ -9,3 +10,4 @@ color = Color( 0.184314, 0.572549, 0.301961, 0.498039 )
 range_item_cull_mask = 2
 shadow_enabled = true
 shadow_item_cull_mask = 2
+script = ExtResource( 2 )

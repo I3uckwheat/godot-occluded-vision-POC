@@ -46,9 +46,8 @@ color = Color( 0.337255, 0, 1, 1 )
 energy = 0.74
 
 [node name="Light2D" parent="Lights" instance=ExtResource( 2 )]
-position = Vector2( 370, -356 )
-texture_scale = 2.01
-energy = 0.74
+position = Vector2( 420, -504 )
+texture_scale = 1.04
 
 [node name="Walls" type="Node2D" parent="."]
 
