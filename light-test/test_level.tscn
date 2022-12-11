@@ -48,6 +48,7 @@ energy = 0.74
 [node name="Light2D" parent="Lights" instance=ExtResource( 2 )]
 position = Vector2( 420, -504 )
 texture_scale = 1.04
+random_flicker = true
 
 [node name="Walls" type="Node2D" parent="."]
 
