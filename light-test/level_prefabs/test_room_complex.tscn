@@ -1,0 +1,172 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://light-test/wall.tscn" type="PackedScene" id=1]
+[ext_resource path="res://light-test/LightSource.tscn" type="PackedScene" id=2]
+
+[sub_resource type="OccluderPolygon2D" id=1]
+polygon = PoolVector2Array( -241, -25, -85, -21, 28, -22, 319, -28, 1262, -22, 1267, 445, 1236, 444, 1237, -10, 407.002, -7.99841, -7, -7, -6, 256, -21, 256, -24, 189, -23, 166, -22, -6, -241, -1 )
+
+[sub_resource type="OccluderPolygon2D" id=6]
+polygon = PoolVector2Array( 1301, 410, 1266, 410, 1268, 587, -180, 596, -179, -87, -199, -87, -193, 616, 1292, 613 )
+
+[sub_resource type="OccluderPolygon2D" id=2]
+polygon = PoolVector2Array( 629, 0, 630, 150, 610, 151, 608, -24, 629, -26 )
+
+[sub_resource type="OccluderPolygon2D" id=3]
+polygon = PoolVector2Array( 639, 259, 642, 241, 627, 236, 629, 207, 610, 207, 609, 238, -22, 241, -20, 255, 420, 260, 420, 633, -13, 631, -11, 365, -31, 367, -30, 655, 444, 654, 444, 256 )
+
+[sub_resource type="OccluderPolygon2D" id=7]
+polygon = PoolVector2Array( 914, 222, 968, 222, 967, 270, 915, 270 )
+
+[sub_resource type="OccluderPolygon2D" id=4]
+polygon = PoolVector2Array( 790, 230, 808, 228, 809, 280, 789, 279 )
+
+[sub_resource type="OccluderPolygon2D" id=5]
+polygon = PoolVector2Array( 931, 224, 947, 224, 948, 274, 930, 274 )
+
+[node name="test_room_complex" type="Node2D"]
+position = Vector2( -301, 214 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Floor" type="ColorRect" parent="."]
+margin_left = -466.0
+margin_top = -563.0
+margin_right = 1032.0
+margin_bottom = 235.0
+color = Color( 0.568627, 0.572549, 0.541176, 1 )
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="StaticBody2D" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 400, -551 )
+scale = Vector2( 42.8, 1 )
+
+[node name="StaticBody2D21" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( -350, -547 )
+scale = Vector2( 8.15062, 1 )
+
+[node name="StaticBody2D8" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 275, 218 )
+scale = Vector2( 49.24, 1 )
+
+[node name="StaticBody2D18" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( -24, 107 )
+scale = Vector2( 16.0284, 1 )
+
+[node name="StaticBody2D2" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 81, -284 )
+scale = Vector2( 22.48, 1 )
+
+[node name="StaticBody2D3" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 388, -470 )
+scale = Vector2( 0.92, 5.97416 )
+
+[node name="StaticBody2D7" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 1015, 127 )
+scale = Vector2( 1.4, 7.0542 )
+
+[node name="StaticBody2D9" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 1017, -328 )
+scale = Vector2( 1.4, 15.8942 )
+
+[node name="StaticBody2D5" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( -246, -416 )
+scale = Vector2( 0.92, 9.85416 )
+
+[node name="StaticBody2D19" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( -451, -119 )
+scale = Vector2( 0.92, 23.7342 )
+
+[node name="StaticBody2D20" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( -252, -25 )
+scale = Vector2( 0.92, 9.85416 )
+
+[node name="StaticBody2D11" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 202, -87 )
+scale = Vector2( 1.23327, 14.0844 )
+
+[node name="StaticBody2D4" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 388, -300 )
+scale = Vector2( 0.92, 2.01416 )
+
+[node name="StaticBody2D12" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 918, 51 )
+scale = Vector2( 0.92, 2.01416 )
+
+[node name="StaticBody2D13" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 809, 53 )
+scale = Vector2( 0.92, 2.01416 )
+
+[node name="StaticBody2D14" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 710, 54 )
+scale = Vector2( 0.92, 2.01416 )
+
+[node name="StaticBody2D15" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 713, -111 )
+scale = Vector2( 0.92, 2.01416 )
+
+[node name="StaticBody2D16" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 820, -120 )
+scale = Vector2( 2.16, 2.01416 )
+
+[node name="StaticBody2D17" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 924, -125 )
+scale = Vector2( 0.92, 2.01416 )
+
+[node name="Occluders" type="Node2D" parent="."]
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Occluders"]
+position = Vector2( -231, -535 )
+occluder = SubResource( 1 )
+
+[node name="LightOccluder2D4" type="LightOccluder2D" parent="Occluders"]
+position = Vector2( -266, -387 )
+occluder = SubResource( 6 )
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Occluders"]
+position = Vector2( -231, -535 )
+occluder = SubResource( 2 )
+
+[node name="LightOccluder2D3" type="LightOccluder2D" parent="Occluders"]
+position = Vector2( -231, -535 )
+occluder = SubResource( 3 )
+
+[node name="Light Pillar" type="LightOccluder2D" parent="Occluders"]
+position = Vector2( -121, -365 )
+occluder = SubResource( 7 )
+
+[node name="Pillar1" type="LightOccluder2D" parent="Occluders"]
+position = Vector2( -86, -364 )
+occluder = SubResource( 4 )
+
+[node name="Pillar3" type="LightOccluder2D" parent="Occluders"]
+position = Vector2( -20, -199 )
+occluder = SubResource( 5 )
+
+[node name="Pillar4" type="LightOccluder2D" parent="Occluders"]
+position = Vector2( -15, -372 )
+occluder = SubResource( 5 )
+
+[node name="Pillar5" type="LightOccluder2D" parent="Occluders"]
+position = Vector2( -130, -198 )
+occluder = SubResource( 5 )
+
+[node name="Pillar6" type="LightOccluder2D" parent="Occluders"]
+position = Vector2( -229, -196 )
+occluder = SubResource( 5 )
+
+[node name="Lights" type="Node2D" parent="Occluders"]
+
+[node name="Light2D" parent="Occluders/Lights" instance=ExtResource( 2 )]
+position = Vector2( 818, -76 )
+texture_scale = 0.81
+
+[node name="Light2D3" parent="Occluders/Lights" instance=ExtResource( 2 )]
+position = Vector2( -173, -483 )
+texture_scale = 1.04
+
+[node name="Light2D2" parent="Occluders/Lights" instance=ExtResource( 2 )]
+position = Vector2( -63, -88 )
+texture_scale = 1.04

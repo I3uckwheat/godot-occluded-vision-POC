@@ -1,0 +1,70 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://light-test/wall.tscn" type="PackedScene" id=1]
+[ext_resource path="res://light-test/LightSource.tscn" type="PackedScene" id=2]
+
+[sub_resource type="OccluderPolygon2D" id=1]
+polygon = PoolVector2Array( -236, 304, 177, 302, 177, 327, -236, 325 )
+
+[sub_resource type="OccluderPolygon2D" id=2]
+polygon = PoolVector2Array( -231, 305, -227, 560, -203, 559, -204, 306 )
+
+[sub_resource type="OccluderPolygon2D" id=3]
+polygon = PoolVector2Array( 146, 206, 174, 206, 171, 352, 144, 352 )
+
+[node name="small_room" type="Node2D"]
+position = Vector2( -301, 214 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Floor" type="ColorRect" parent="."]
+margin_left = 74.0
+margin_top = -31.0
+margin_right = 477.0
+margin_bottom = 235.0
+color = Color( 0.568627, 0.572549, 0.541176, 1 )
+
+[node name="Lights" type="Node2D" parent="."]
+
+[node name="Occluders" type="Node2D" parent="Lights"]
+
+[node name="Pillar6" type="LightOccluder2D" parent="Lights/Occluders"]
+position = Vector2( 300, -333 )
+occluder = SubResource( 1 )
+
+[node name="Pillar8" type="LightOccluder2D" parent="Lights/Occluders"]
+position = Vector2( 300, -333 )
+occluder = SubResource( 2 )
+
+[node name="Pillar7" type="LightOccluder2D" parent="Lights/Occluders"]
+position = Vector2( 307, -98 )
+occluder = SubResource( 1 )
+
+[node name="Pillar9" type="LightOccluder2D" parent="Lights/Occluders"]
+position = Vector2( 303, -125 )
+occluder = SubResource( 3 )
+
+[node name="Light2D3" parent="Lights" instance=ExtResource( 2 )]
+position = Vector2( 130, 15 )
+texture_scale = 1.5
+color = Color( 0, 1, 0.180392, 1 )
+energy = 0.56
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="StaticBody2D8" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 275, 218 )
+scale = Vector2( 13.8, 1 )
+
+[node name="StaticBody2D9" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 271, -17 )
+scale = Vector2( 13.8, 1 )
+
+[node name="StaticBody2D10" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 86, 100 )
+scale = Vector2( 1.12, 8.56 )
+
+[node name="StaticBody2D11" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 461, 157 )
+scale = Vector2( 1.12, 5.12 )

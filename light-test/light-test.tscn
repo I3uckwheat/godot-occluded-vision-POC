@@ -1,16 +1,35 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://light-test/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://light-test/test_level.tscn" type="PackedScene" id=4]
+[ext_resource path="res://light-test/level_prefabs/test_room_complex.tscn" type="PackedScene" id=2]
+[ext_resource path="res://light-test/level_prefabs/hallway.tscn" type="PackedScene" id=3]
+[ext_resource path="res://light-test/level_prefabs/small_room.tscn" type="PackedScene" id=4]
 
 [node name="Node2D" type="Node2D"]
 position = Vector2( -143, -45 )
 
-[node name="TestLevel" parent="." instance=ExtResource( 4 )]
+[node name="OutOfBounds" type="ColorRect" parent="."]
+margin_left = -4928.0
+margin_top = -1667.0
+margin_right = 4766.0
+margin_bottom = 2356.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="small_room" parent="." instance=ExtResource( 4 )]
+position = Vector2( -2714, -316 )
+
+[node name="test_room_complex" parent="." instance=ExtResource( 2 )]
+position = Vector2( -295, 216 )
+
+[node name="hallway" parent="." instance=ExtResource( 3 )]
+position = Vector2( -1774, -451 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 light_mask = 2
-position = Vector2( -206, -201 )
+position = Vector2( -2147, -294 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 current = true

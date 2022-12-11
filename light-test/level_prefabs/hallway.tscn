@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://light-test/wall.tscn" type="PackedScene" id=1]
+[ext_resource path="res://light-test/LightSource.tscn" type="PackedScene" id=2]
+
+[sub_resource type="OccluderPolygon2D" id=1]
+polygon = PoolVector2Array( -236, 304, 1241, 303, 1241, 324, -236, 325 )
+
+[node name="hallway" type="Node2D"]
+position = Vector2( -301, 214 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Floor" type="ColorRect" parent="."]
+margin_left = -463.0
+margin_top = 104.0
+margin_right = 1014.0
+margin_bottom = 235.0
+color = Color( 0.568627, 0.572549, 0.541176, 1 )
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="StaticBody2D8" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 275, 218 )
+scale = Vector2( 49.24, 1 )
+
+[node name="StaticBody2D9" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 277, 118 )
+scale = Vector2( 49.24, 1 )
+
+[node name="Occluders" type="Node2D" parent="."]
+
+[node name="Pillar6" type="LightOccluder2D" parent="Occluders"]
+position = Vector2( -225, -196 )
+occluder = SubResource( 1 )
+
+[node name="Pillar7" type="LightOccluder2D" parent="Occluders"]
+position = Vector2( -227, -96 )
+occluder = SubResource( 1 )
+
+[node name="Lights" type="Node2D" parent="Occluders"]
+
+[node name="Light2D" parent="Occluders/Lights" instance=ExtResource( 2 )]
+position = Vector2( -140, 166 )
+texture_scale = 0.35
+energy = 0.99
+
+[node name="Light2D2" parent="Occluders/Lights" instance=ExtResource( 2 )]
+position = Vector2( 266, 171 )
+texture_scale = 0.35
+
+[node name="Light2D3" parent="Occluders/Lights" instance=ExtResource( 2 )]
+position = Vector2( 711, 168 )
+texture_scale = 0.35
