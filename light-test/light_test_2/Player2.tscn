@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=3 uid="uid://2srfmu4kh3n4"]
+
+[ext_resource type="Script" path="res://light-test/light_test_2/Player2.gd" id="1_3rgp1"]
+[ext_resource type="Texture2D" uid="uid://b4c83afwwkjcu" path="res://light-test/whitesquare.png" id="2_r4wr8"]
+
+[sub_resource type="PhysicsMaterial" id="2"]
+friction = 0.0
+
+[sub_resource type="CircleShape2D" id="1"]
+
+[node name="Player" type="RigidBody2D"]
+mass = 0.144898
+physics_material_override = SubResource("2")
+gravity_scale = 0.0
+linear_damp = 7.936
+script = ExtResource("1_3rgp1")
+
+[node name="Body" type="Node2D" parent="."]
+
+[node name="PlayerBody" type="ColorRect" parent="Body"]
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+color = Color(0.0588235, 0.964706, 0.152941, 1)
+
+[node name="PlayerBody" type="ColorRect" parent="Body/PlayerBody"]
+offset_left = 17.0
+offset_top = 5.0
+offset_right = 20.0
+offset_bottom = 17.0
+color = Color(0.235294, 0.117647, 0.803922, 1)
+
+[node name="Weapon" type="ColorRect" parent="Body/PlayerBody"]
+visible = false
+offset_left = 19.0
+offset_top = 13.0
+offset_right = 35.0
+offset_bottom = 16.0
+color = Color(0, 0.180392, 0.0392157, 1)
+
+[node name="PlayerFOV_light" type="PointLight2D" parent="."]
+visible = false
+z_as_relative = false
+blend_mode = 2
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+texture = ExtResource("2_r4wr8")
+texture_scale = 11.36
+
+[node name="PlayerCollider" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("1")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(379, 0)
+collide_with_areas = true
+collide_with_bodies = false

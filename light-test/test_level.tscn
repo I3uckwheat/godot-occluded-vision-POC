@@ -4,19 +4,19 @@
 [ext_resource path="res://light-test/LightSource.tscn" type="PackedScene" id=2]
 
 [sub_resource type="OccluderPolygon2D" id=1]
-polygon = PoolVector2Array( -41, 51, -50, -131, 20, -133, 0, -111, 1465, -219, 1483, 968, -481, 949, -211, 127, -211, 740, 1244, 745, 1237, -10, -7, -7, -6, 256, -21, 256, -24, 189, -214, 188, -343, 187, -345, 13 )
+polygon = PackedVector2Array( -41, 51, -50, -131, 20, -133, 0, -111, 1465, -219, 1483, 968, -481, 949, -211, 127, -211, 740, 1244, 745, 1237, -10, -7, -7, -6, 256, -21, 256, -24, 189, -214, 188, -343, 187, -345, 13 )
 
 [sub_resource type="OccluderPolygon2D" id=2]
-polygon = PoolVector2Array( 629, 0, 630, 150, 610, 151, 613, -223, 634, -222 )
+polygon = PackedVector2Array( 629, 0, 630, 150, 610, 151, 613, -223, 634, -222 )
 
 [sub_resource type="OccluderPolygon2D" id=3]
-polygon = PoolVector2Array( 639, 259, 642, 241, 627, 236, 629, 207, 610, 207, 609, 238, -22, 241, -20, 255, 420, 260, 420, 633, -13, 631, -11, 365, -31, 367, -30, 655, 444, 654, 444, 256 )
+polygon = PackedVector2Array( 639, 259, 642, 241, 627, 236, 629, 207, 610, 207, 609, 238, -22, 241, -20, 255, 420, 260, 420, 633, -13, 631, -11, 365, -31, 367, -30, 655, 444, 654, 444, 256 )
 
 [sub_resource type="OccluderPolygon2D" id=4]
-polygon = PoolVector2Array( 790, 230, 808, 228, 809, 280, 789, 279 )
+polygon = PackedVector2Array( 790, 230, 808, 228, 809, 280, 789, 279 )
 
 [sub_resource type="OccluderPolygon2D" id=5]
-polygon = PoolVector2Array( 931, 224, 947, 224, 948, 274, 930, 274 )
+polygon = PackedVector2Array( 931, 224, 947, 224, 948, 274, 930, 274 )
 
 [node name="TestLevel" type="Node2D"]
 position = Vector2( -301, 214 )
@@ -25,10 +25,10 @@ __meta__ = {
 }
 
 [node name="Floor" type="ColorRect" parent="."]
-margin_left = -1750.0
-margin_top = -1594.0
-margin_right = 1936.0
-margin_bottom = 1400.0
+offset_left = -1750.0
+offset_top = -1594.0
+offset_right = 1936.0
+offset_bottom = 1400.0
 color = Color( 0.568627, 0.572549, 0.541176, 1 )
 
 [node name="Lights" type="Node2D" parent="."]
@@ -45,7 +45,7 @@ texture_scale = 2.01
 color = Color( 0.337255, 0, 1, 1 )
 energy = 0.74
 
-[node name="Light2D" parent="Lights" instance=ExtResource( 2 )]
+[node name="PointLight2D" parent="Lights" instance=ExtResource( 2 )]
 position = Vector2( 420, -504 )
 texture_scale = 1.04
 random_flicker = true

@@ -4,25 +4,25 @@
 [ext_resource path="res://light-test/LightSource.tscn" type="PackedScene" id=2]
 
 [sub_resource type="OccluderPolygon2D" id=1]
-polygon = PoolVector2Array( -241, -25, -85, -21, 28, -22, 319, -28, 1262, -22, 1267, 445, 1236, 444, 1237, -10, 407.002, -7.99841, -7, -7, -6, 256, -21, 256, -24, 189, -23, 166, -22, -6, -241, -1 )
+polygon = PackedVector2Array( -241, -25, -85, -21, 28, -22, 319, -28, 1262, -22, 1267, 445, 1236, 444, 1237, -10, 407.002, -7.99841, -7, -7, -6, 256, -21, 256, -24, 189, -23, 166, -22, -6, -241, -1 )
 
 [sub_resource type="OccluderPolygon2D" id=6]
-polygon = PoolVector2Array( 1301, 410, 1266, 410, 1268, 587, -180, 596, -179, -87, -199, -87, -193, 616, 1292, 613 )
+polygon = PackedVector2Array( 1301, 410, 1266, 410, 1268, 587, -180, 596, -179, -87, -199, -87, -193, 616, 1292, 613 )
 
 [sub_resource type="OccluderPolygon2D" id=2]
-polygon = PoolVector2Array( 629, 0, 630, 150, 610, 151, 608, -24, 629, -26 )
+polygon = PackedVector2Array( 629, 0, 630, 150, 610, 151, 608, -24, 629, -26 )
 
 [sub_resource type="OccluderPolygon2D" id=3]
-polygon = PoolVector2Array( 639, 259, 642, 241, 627, 236, 629, 207, 610, 207, 609, 238, -22, 241, -20, 255, 420, 260, 420, 633, -13, 631, -11, 365, -31, 367, -30, 655, 444, 654, 444, 256 )
+polygon = PackedVector2Array( 639, 259, 642, 241, 627, 236, 629, 207, 610, 207, 609, 238, -22, 241, -20, 255, 420, 260, 420, 633, -13, 631, -11, 365, -31, 367, -30, 655, 444, 654, 444, 256 )
 
 [sub_resource type="OccluderPolygon2D" id=7]
-polygon = PoolVector2Array( 914, 222, 968, 222, 967, 270, 915, 270 )
+polygon = PackedVector2Array( 914, 222, 968, 222, 967, 270, 915, 270 )
 
 [sub_resource type="OccluderPolygon2D" id=4]
-polygon = PoolVector2Array( 790, 230, 808, 228, 809, 280, 789, 279 )
+polygon = PackedVector2Array( 790, 230, 808, 228, 809, 280, 789, 279 )
 
 [sub_resource type="OccluderPolygon2D" id=5]
-polygon = PoolVector2Array( 931, 224, 947, 224, 948, 274, 930, 274 )
+polygon = PackedVector2Array( 931, 224, 947, 224, 948, 274, 930, 274 )
 
 [node name="test_room_complex" type="Node2D"]
 position = Vector2( -301, 214 )
@@ -31,10 +31,10 @@ __meta__ = {
 }
 
 [node name="Floor" type="ColorRect" parent="."]
-margin_left = -466.0
-margin_top = -563.0
-margin_right = 1032.0
-margin_bottom = 235.0
+offset_left = -466.0
+offset_top = -563.0
+offset_right = 1032.0
+offset_bottom = 235.0
 color = Color( 0.568627, 0.572549, 0.541176, 1 )
 
 [node name="Walls" type="Node2D" parent="."]
@@ -133,7 +133,7 @@ occluder = SubResource( 2 )
 position = Vector2( -231, -535 )
 occluder = SubResource( 3 )
 
-[node name="Light Pillar" type="LightOccluder2D" parent="Occluders"]
+[node name="Light3D Pillar" type="LightOccluder2D" parent="Occluders"]
 position = Vector2( -121, -365 )
 occluder = SubResource( 7 )
 
@@ -159,7 +159,7 @@ occluder = SubResource( 5 )
 
 [node name="Lights" type="Node2D" parent="Occluders"]
 
-[node name="Light2D" parent="Occluders/Lights" instance=ExtResource( 2 )]
+[node name="PointLight2D" parent="Occluders/Lights" instance=ExtResource( 2 )]
 position = Vector2( 818, -76 )
 texture_scale = 0.81
 

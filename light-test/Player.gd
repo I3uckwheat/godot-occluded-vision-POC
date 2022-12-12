@@ -1,11 +1,12 @@
 extends RigidBody2D
 
-export var aiming_speed = 1.4
-export var normal_speed = 2.8
+@export var aiming_speed = 1.4
+@export var normal_speed = 2.8
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$PlayerFOV.visible = true
+#	$PlayerFOV.visible = true
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -36,5 +37,3 @@ func _process(_delta):
 		speed = aiming_speed
 	
 	apply_central_impulse(move_impulse.normalized() * speed)
-
-# Use linear_velocity for facing while walking normally (not aiming)

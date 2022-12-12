@@ -4,7 +4,7 @@
 [ext_resource path="res://light-test/LightSource.tscn" type="PackedScene" id=2]
 
 [sub_resource type="OccluderPolygon2D" id=1]
-polygon = PoolVector2Array( -236, 304, 1241, 303, 1241, 324, -236, 325 )
+polygon = PackedVector2Array( -236, 304, 1241, 303, 1241, 324, -236, 325 )
 
 [node name="hallway" type="Node2D"]
 position = Vector2( -301, 214 )
@@ -13,10 +13,10 @@ __meta__ = {
 }
 
 [node name="Floor" type="ColorRect" parent="."]
-margin_left = -463.0
-margin_top = 104.0
-margin_right = 1014.0
-margin_bottom = 235.0
+offset_left = -463.0
+offset_top = 104.0
+offset_right = 1014.0
+offset_bottom = 235.0
 color = Color( 0.568627, 0.572549, 0.541176, 1 )
 
 [node name="Walls" type="Node2D" parent="."]
@@ -41,7 +41,7 @@ occluder = SubResource( 1 )
 
 [node name="Lights" type="Node2D" parent="Occluders"]
 
-[node name="Light2D" parent="Occluders/Lights" instance=ExtResource( 2 )]
+[node name="PointLight2D" parent="Occluders/Lights" instance=ExtResource( 2 )]
 position = Vector2( -140, 166 )
 texture_scale = 0.35
 energy = 0.99
