@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://2srfmu4kh3n4"]
+[gd_scene load_steps=6 format=3 uid="uid://2srfmu4kh3n4"]
 
 [ext_resource type="Script" path="res://light-test/light_test_2/Player2.gd" id="1_3rgp1"]
 [ext_resource type="Texture2D" uid="uid://b4c83afwwkjcu" path="res://light-test/whitesquare.png" id="2_r4wr8"]
@@ -7,6 +7,9 @@
 friction = 0.0
 
 [sub_resource type="CircleShape2D" id="1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s0n87"]
+radius = 312.847
 
 [node name="Player" type="RigidBody2D"]
 mass = 0.144898
@@ -49,10 +52,14 @@ texture = ExtResource("2_r4wr8")
 texture_scale = 11.36
 
 [node name="PlayerCollider" type="CollisionShape2D" parent="."]
+visible = false
 rotation = 1.5708
 shape = SubResource("1")
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
-target_position = Vector2(379, 0)
-collide_with_areas = true
-collide_with_bodies = false
+[node name="OccluderDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OccluderDetector"]
+shape = SubResource("CircleShape2D_s0n87")
+
+[connection signal="area_entered" from="OccluderDetector" to="." method="_on_occluder_detector_area_entered"]
+[connection signal="area_exited" from="OccluderDetector" to="." method="_on_occluder_detector_area_exited"]
