@@ -8,6 +8,6 @@ script = ExtResource("1_xb6r3")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
-polygon = PackedVector2Array(-21, -21, 61, -13, 47, 36, -50, 39, -42, -16)
+polygon = PackedVector2Array(8, -18, 51, 39, -50, 39)
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]

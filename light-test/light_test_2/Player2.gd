@@ -41,21 +41,27 @@ func _process(_delta):
 	apply_central_impulse(move_impulse.normalized() * speed)
 	queue_redraw()
 	
-func _checkRay():
-	pass
-	# Instead of a ray, we can use an area2d and cast a ray across the edges 
-	# to detect what to draw, then draw them left-to-right so we get
-	# an occlusion polygon
+# func convertPolyToShadow(poly, position):
+# 	var moved_poly_vectors = PackedVector2Array()
+# 	var shadow_vectors = PackedVector2Array()
+# 	for vector in poly:
+# 		var start_vector = to_local(vector + position.origin)
+# 		var end_vector = start_vector.normalized() * 300
+# 		moved_poly_vectors.push_back(start_vector)
+# 		shadow_vectors.push_back(end_vector)
+# 		# moved_vectors.push_back(to_local(vector + position.origin))
 
-	# Next steps
-	#   draw lines to each corner of the polygon
-	#   set up proper resource to pass in and create both area2d and occluder
-	#   Handle different types of area2d shapes for the future if nessessary
+# 	var finalVectors = PackedVector2Array()
+# 	finalVectors.push_back(moved_poly_vectors[0])
+# 	finalVectors += moved_poly_vectors
+# 	finalVectors += shadow_vectors
+# 	return finalVectors
 
-	# var collision = $OccluderDetector.get_overlapping_areas()
-	# if collision:
-	# 	var edges = collision[0].get_node("CollisionPolygon2D").polygon
-	# 	drawLineToEdges(edges);
+
+# const FLOAT_EPSILON = 0.001
+
+# static func compare_floats(a, b, epsilon = FLOAT_EPSILON):
+# 	return abs(a - b) <= epsilon
 
 func extractVectors():
 	var vectors = PackedVector2Array()
@@ -72,11 +78,58 @@ func convertVectorsToLocal(poly, area_pos):
 		vectors.push_back(moved_vector)
 	return vectors
 
+func getEndVectorsForPoly(poly, position):
+	var endVectors = PackedVector2Array()
+	for vector in poly:
+		var start_vector = to_local(vector + position.origin)
+		endVectors.push_back(start_vector.normalized() * 3000)
+	return endVectors
+
+
+func convertPolyToShadowPolys(poly, position):
+	var endVectors = getEndVectorsForPoly(poly, position)
+	var shadowPolys = []
+
+	for vector in poly:
+		var shadow = PackedVector2Array()
+		shadow.push_back(to_local(vector + position.origin))
+		shadow += endVectors
+		shadowPolys.push_back(shadow)
+
+		# moved_poly_vectors.push_back(start_vector)
+		# shadow_vectors.push_back(end_vector)
+	
+	var mainPoly = PackedVector2Array()
+	for vector in poly:
+		mainPoly.push_back(to_local(vector + position.origin))
+
+	shadowPolys.push_back(mainPoly)
+	return shadowPolys
+
 func _draw():
-	for vector in extractVectors():
-		# print(vector)
-		# draw_line(Vector2(0, 0), Vector2(100, 100), Color(100, 100, 100, 50), 24)
+	for area in occluders_in_range:
+		var poly = area.get_node("CollisionPolygon2D").polygon
+		var area_pos = area.get_global_transform_with_canvas()
+		# var shadowPolygon = convertPolyToShadow(poly, area_pos)
+		# print(shadowPolygon)
+		# draw_colored_polygon(shadowPolygon, Color(100, 100, 100, 50))
+
+		for vector in getEndVectorsForPoly(poly, area_pos):
+			draw_line(Vector2(0, 0), vector, Color(0, 0, 100, 50))
+
+		for shadowPoly in convertPolyToShadowPolys(poly, area_pos):
+			draw_colored_polygon(shadowPoly, Color(0, 0, 0, 50))
+			# draw_polyline(shadowPoly, Color(0, 0, 0, 1), 10)
+
+		
+
+
+	# var vectors = extractVectors()
+	# draw_colored_polygon(vectors, Color(100, 100, 100, 50))
+	# # get points to draw, connect them, draw polygon
+	for vector in extractVectors(): # draw lines to verticies
 		draw_line(Vector2(0, 0), to_local(vector), Color(100, 100, 100, 50))
+		# draw_line(Vector2(0, 0), to_local(vector).normalized() * 10000, Color(100, 100, 100, 50)) # Draws line to and across verticie
 
 # # func drawLineToEdges(vectorArray):
 
