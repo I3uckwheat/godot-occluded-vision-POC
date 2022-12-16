@@ -5,6 +5,7 @@ extends Node2D
 
 
 # Called when the node enters the scene tree for the first time.
+# TODO: Fix when area2d is not at 0,0
 func _ready():
 	var poly = $Area2D/CollisionPolygon2D.polygon
 	var lightOccluderPoly = OccluderPolygon2D.new()

@@ -43,7 +43,7 @@ scale = Vector2(1.12, 8.56)
 
 [node name="StaticBody2D11" parent="Walls" instance=ExtResource("2_47qct")]
 position = Vector2(461, 157)
-scale = Vector2(1.12, 5.12)
+scale = Vector2(1.12, 11.96)
 
 [node name="Occluders" type="Node2D" parent="."]
 

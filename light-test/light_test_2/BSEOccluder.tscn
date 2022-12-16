@@ -3,11 +3,15 @@
 [ext_resource type="Script" path="res://light-test/light_test_2/BSEOccluder.gd" id="1_xb6r3"]
 
 [node name="BSEOccluder" type="Node2D"]
+editor_description = "Be careful when Area2d is not at 0,0"
 script = ExtResource("1_xb6r3")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=["shadow"]]
+position = Vector2(-4.03897e-28, 9.53674e-07)
+scale = Vector2(1.13495, 1.24872)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
-polygon = PackedVector2Array(8, -18, 51, 39, -50, 39)
+position = Vector2(8.07794e-28, -1.90735e-06)
+polygon = PackedVector2Array(0, 0, 10, 10, 10, -10)
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]

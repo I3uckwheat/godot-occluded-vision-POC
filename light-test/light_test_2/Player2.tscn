@@ -17,6 +17,8 @@ physics_material_override = SubResource("2")
 gravity_scale = 0.0
 linear_damp = 7.936
 script = ExtResource("1_3rgp1")
+aiming_speed = null
+normal_speed = null
 
 [node name="Body" type="Node2D" parent="."]
 
@@ -51,14 +53,15 @@ shadow_color = Color(0, 0, 0, 1)
 texture = ExtResource("2_r4wr8")
 texture_scale = 11.36
 
-[node name="PlayerCollider" type="CollisionShape2D" parent="."]
+[node name="PlayerCollider" type="CollisionShape2D" parent="." groups=["shadow_detector"]]
 visible = false
 rotation = 1.5708
 shape = SubResource("1")
+disabled = true
 
 [node name="OccluderDetector" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="OccluderDetector"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OccluderDetector" groups=["shadow_detector"]]
 shape = SubResource("CircleShape2D_s0n87")
 
 [connection signal="area_entered" from="OccluderDetector" to="." method="_on_occluder_detector_area_entered"]

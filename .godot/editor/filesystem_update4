@@ -2,3 +2,4 @@ res://light-test/light_test_2/Player2.gd
 res://light-test/light_test_2/small_room2.tscn
 res://light-test/light_test_2/Player2.tscn
 res://light-test/light_test_2/BSEOccluder.tscn
+res://light-test/light_test_2/BSEOccluder.gd

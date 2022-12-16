@@ -39,86 +39,87 @@ func _process(_delta):
 		speed = aiming_speed
 	
 	apply_central_impulse(move_impulse.normalized() * speed)
+	
+func _physics_process(_delta):
 	queue_redraw()
-	
-# func convertPolyToShadow(poly, position):
-# 	var moved_poly_vectors = PackedVector2Array()
-# 	var shadow_vectors = PackedVector2Array()
-# 	for vector in poly:
-# 		var start_vector = to_local(vector + position.origin)
-# 		var end_vector = start_vector.normalized() * 300
-# 		moved_poly_vectors.push_back(start_vector)
-# 		shadow_vectors.push_back(end_vector)
-# 		# moved_vectors.push_back(to_local(vector + position.origin))
-
-# 	var finalVectors = PackedVector2Array()
-# 	finalVectors.push_back(moved_poly_vectors[0])
-# 	finalVectors += moved_poly_vectors
-# 	finalVectors += shadow_vectors
-# 	return finalVectors
 
 
-# const FLOAT_EPSILON = 0.001
+func createOffsetPoly(poly, offset):
+	var offsetVerticies = PackedVector2Array()
+	for vertex in poly:
+		offsetVerticies.push_back(to_local(vertex + offset))
 
-# static func compare_floats(a, b, epsilon = FLOAT_EPSILON):
-# 	return abs(a - b) <= epsilon
-
-func extractVectors():
-	var vectors = PackedVector2Array()
-	for area in occluders_in_range:
-		var poly = area.get_node("CollisionPolygon2D").polygon
-		var area_pos = area.get_global_transform_with_canvas()
-		vectors += convertVectorsToLocal(poly, area_pos)
-	return vectors
-
-func convertVectorsToLocal(poly, area_pos):
-	var vectors = PackedVector2Array()
-	for vector in poly:
-		var moved_vector = (vector + area_pos.origin)
-		vectors.push_back(moved_vector)
-	return vectors
-
-func getEndVectorsForPoly(poly, position):
-	var endVectors = PackedVector2Array()
-	for vector in poly:
-		var start_vector = to_local(vector + position.origin)
-		endVectors.push_back(start_vector.normalized() * 3000)
-	return endVectors
+	return offsetVerticies
 
 
-func convertPolyToShadowPolys(poly, position):
-	var endVectors = getEndVectorsForPoly(poly, position)
-	var shadowPolys = []
 
-	for vector in poly:
-		var shadow = PackedVector2Array()
-		shadow.push_back(to_local(vector + position.origin))
-		shadow += endVectors
-		shadowPolys.push_back(shadow)
+const FLOAT_EPSILON = 0.01
 
-		# moved_poly_vectors.push_back(start_vector)
-		# shadow_vectors.push_back(end_vector)
-	
-	var mainPoly = PackedVector2Array()
-	for vector in poly:
-		mainPoly.push_back(to_local(vector + position.origin))
+func compare_vectors(vector_a, vector_b, epsilon = FLOAT_EPSILON):
+	return compare_floats(vector_a.x, vector_b.x, epsilon) && compare_floats(vector_a.y, vector_b.y, epsilon)
 
-	shadowPolys.push_back(mainPoly)
-	return shadowPolys
+func compare_floats(a, b, epsilon = FLOAT_EPSILON):
+	return abs(a - b) <= epsilon
+
+# Convert to handle multiple polygons
+# maybe pass in the occluder here, loop elsewhere
+func getOccluderHits():
+	var space_state = get_world_2d().direct_space_state
+
+	var hits = PackedVector2Array()
+	for occluder in occluders_in_range:
+		var poly = occluder.get_node("CollisionPolygon2D").polygon
+		var poly_pos = occluder.get_node("CollisionPolygon2D").get_global_transform() 
+		# draw_colored_polygon(createOffsetPoly(poly, poly_pos.origin), Color(0, 0, 0, 50)) # draw shadow polygons
+
+		for vertex in createOffsetPoly(poly, poly_pos.origin):
+			var query = PhysicsRayQueryParameters2D.create(global_position, to_global(vertex))
+			query.collide_with_areas = true
+			query.collide_with_bodies = false
+			query.exclude = [self]
+
+			var result = space_state.intersect_ray(query)
+
+			if result.size() > 1:
+				draw_line(to_local(global_position), to_local(result["position"]), Color(0, 0, 100, 50)) # draw hit lines
+				print(to_global(vertex), result["position"]) # draw comparasons
+				if compare_vectors(to_global(vertex), result["position"], 3):
+					hits.push_back(vertex)
+
+	return hits
+
+# TODO: check left and right to find edges
+func getShadowPolygons():
+	var hits = getOccluderHits()
+	for vector in hits:
+		pass
+		# HERE IS WHERE YOU"RE WORKING
+		# get points past player to a range that move across the hits
+		# connect points into a polygon
+		# render
+
+		# draw_line(Vector2(0, 0), vector, Color(0, 100, 0, 50))
 
 func _draw():
 	for area in occluders_in_range:
-		var poly = area.get_node("CollisionPolygon2D").polygon
-		var area_pos = area.get_global_transform_with_canvas()
+		# var hits = getOccluderHits()
+		# for vector in hits:
+		# 	draw_line(Vector2(0, 0), vector, Color(0, 100, 0, 50))
+
+		
+
+		# var transformedPoly = getTransformedPoints(poly, area_pos)
+		# draw_colored_polygon(transformedPoly, Color(0, 0, 0, 50))
+		pass
 		# var shadowPolygon = convertPolyToShadow(poly, area_pos)
 		# print(shadowPolygon)
 		# draw_colored_polygon(shadowPolygon, Color(100, 100, 100, 50))
 
-		for vector in getEndVectorsForPoly(poly, area_pos):
-			draw_line(Vector2(0, 0), vector, Color(0, 0, 100, 50))
+		# for vector in getEndVectorsForPoly(poly, area_pos):
+		# 	draw_line(Vector2(0, 0), vector, Color(0, 0, 100, 50))
 
-		for shadowPoly in convertPolyToShadowPolys(poly, area_pos):
-			draw_colored_polygon(shadowPoly, Color(0, 0, 0, 50))
+		# for shadowPoly in convertPolyToShadowPolys(poly, area_pos):
+		# 	draw_colored_polygon(shadowPoly, Color(0, 0, 0, 50))
 			# draw_polyline(shadowPoly, Color(0, 0, 0, 1), 10)
 
 		
@@ -127,14 +128,15 @@ func _draw():
 	# var vectors = extractVectors()
 	# draw_colored_polygon(vectors, Color(100, 100, 100, 50))
 	# # get points to draw, connect them, draw polygon
-	for vector in extractVectors(): # draw lines to verticies
-		draw_line(Vector2(0, 0), to_local(vector), Color(100, 100, 100, 50))
+	# for vector in extractVectors(): # draw lines to verticies
+	# 	draw_line(Vector2(0, 0), to_local(vector), Color(100, 100, 100, 50))
 		# draw_line(Vector2(0, 0), to_local(vector).normalized() * 10000, Color(100, 100, 100, 50)) # Draws line to and across verticie
 
 # # func drawLineToEdges(vectorArray):
 
 func _on_occluder_detector_area_entered(area):
-	occluders_in_range.push_back(area)
+	if area.is_in_group("shadow"):
+		occluders_in_range.push_back(area)
 
 func _on_occluder_detector_area_exited(area):
 	occluders_in_range.erase(area)
